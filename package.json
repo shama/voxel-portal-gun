@@ -1,0 +1,45 @@
+{
+  "name": "voxel-portal-gun",
+  "description": "A portal gun for voxel.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/shama/voxel-portal-gun",
+  "author": {
+    "name": "Kyle Robinson Young",
+    "email": "kyle@dontkry.com",
+    "url": "http://dontkry.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shama/voxel-portal-gun.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shama/voxel-portal-gun/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/shama/voxel-portal-gun/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "make": "browserify example/world.js -o example/static/bundle.js",
+    "start": "node example/server.js"
+  },
+  "dependencies": {
+    "voxel-portal": "0.0.1"
+  },
+  "devDependencies": {
+    "voxel-engine": "~0.2.9",
+    "ecstatic": "~0.3.1",
+    "voxel-perlin-terrain": "0.0.5",
+    "voxel-forest": "0.0.0"
+  },
+  "keywords": [
+    "voxel",
+    "portal",
+    "gun"
+  ]
+}
