@@ -25,17 +25,17 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "make": "browserify example/world.js -o example/static/bundle.js",
-    "start": "node example/server.js"
+    "start": "echo \"open localhost:8080/\" && cd example && ../node_modules/.bin/browservefy world.js 8080 -- -d",
+    "gh-pages": "cp -R ./example/* ./ && browserify world.js -o world.js"
   },
   "dependencies": {
     "voxel-portal": "0.0.1"
   },
   "devDependencies": {
-    "voxel-engine": "~0.2.9",
-    "ecstatic": "~0.3.1",
+    "voxel-engine": "~0.3.1",
     "voxel-perlin-terrain": "0.0.5",
-    "voxel-forest": "0.0.0"
+    "voxel-forest": "0.0.0",
+    "browservefy": "0.0.0"
   },
   "keywords": [
     "voxel",
