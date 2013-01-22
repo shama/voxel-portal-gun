@@ -1,7 +1,7 @@
 {
   "name": "voxel-portal-gun",
   "description": "A portal gun for voxel.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/shama/voxel-portal-gun",
   "author": {
     "name": "Kyle Robinson Young",
@@ -32,7 +32,7 @@
     "voxel-portal": "0.0.1"
   },
   "devDependencies": {
-    "voxel-engine": "~0.3.1",
+    "voxel-engine": "~0.3.2",
     "voxel-perlin-terrain": "0.0.5",
     "voxel-forest": "0.0.0",
     "browservefy": "0.0.0"

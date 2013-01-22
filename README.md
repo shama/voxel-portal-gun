@@ -27,6 +27,7 @@ npm install voxel-portal-gun
 Use [browserify](http://browserify.org) to `require('voxel-portal-gun')`.
 
 ## release history
+* 0.1.1 - fix the spherical coordinates
 * 0.1.0 - initial release
 
 ## license

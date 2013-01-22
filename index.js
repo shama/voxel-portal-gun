@@ -18,11 +18,19 @@ module.exports = function(opts) {
     var start = game.controls.yawObject.position.clone();
     var direction = game.camera.matrixWorld.multiplyVector3(new game.THREE.Vector3(0, 0, -1));
     var pos = game.intersectAllMeshes(start, direction);
-    if (pos == false) pos = direction.multiplyScalar(1000);
-    return {
-      position: pos.addSelf(new game.THREE.Vector3(0, game.cubeSize, 0)),
-      rotation: game.cameraRotation()
-    };
+    if (pos == false) {
+      // this next part took me a valve length of time to figure out
+      var r = 1000;
+      var cam = game.cameraRotation();
+      var phi = cam.x - (Math.PI/2);
+      var theta = cam.y;
+      pos = new game.THREE.Vector3(
+        (r * Math.sin(phi) * Math.sin(theta)) + start.x,
+        (r * Math.cos(phi)) + start.y,
+        (r * Math.sin(phi) * Math.cos(theta)) + start.z
+      );
+    }
+    return pos.addSelf(new game.THREE.Vector3(0, game.cubeSize, 0));
   }
 
   return function() {
@@ -31,7 +39,7 @@ module.exports = function(opts) {
     var w = where();
 
     var portal = createPortal({
-      x: w.position.x, y: w.position.y, z: w.position.z,
+      x: w.x, y: w.y, z: w.z,
       width: 70, height: 70 * 1.77
     });
     portals.push(portal);
@@ -43,9 +51,7 @@ module.exports = function(opts) {
       portal.show(portals[0], { x: 0, y: 0, z: -1 });
     }
 
-    portal.monitor.rotation.x = w.rotation.x;
-    portal.monitor.rotation.y = w.rotation.y;
-    portal.monitor.rotation.z = 0;
+    portal.monitor.lookAt(game.controls.yawObject.position);
 
     portal.on('enter', function() {
       var self = this;
